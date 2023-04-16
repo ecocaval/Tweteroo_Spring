@@ -19,6 +19,11 @@ public class TweetService {
         return tweetRepository.findAll(pageable);
     }
 
+    public Page<TweetModel> findByUserName(Pageable pageable, String userName) {
+        return tweetRepository.findByUserName(pageable, userName);
+    }
+
+
     public TweetModel postTweet(TweetModel tweet) {
         return tweetRepository.save(tweet);
     }

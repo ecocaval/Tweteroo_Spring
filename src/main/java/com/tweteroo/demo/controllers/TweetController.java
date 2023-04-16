@@ -28,6 +28,11 @@ public class TweetController {
         return tweetService.findAll(pageable);
     }
 
+    @GetMapping("/{userName}")
+    public Page<TweetModel> findByUserName(@PageableDefault(page = 0, size = 5) Pageable pageable, @PathVariable String userName) {
+        return tweetService.findByUserName(pageable, userName);
+    }
+
     @PostMapping
     public ResponseEntity<?> postTweet(@RequestBody @Valid TweetDto tweet) {
         return ResponseEntity.status(HttpStatus.OK).body(tweetService.postTweet(new TweetModel(tweet)));
